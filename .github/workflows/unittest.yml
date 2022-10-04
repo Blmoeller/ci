@@ -14,10 +14,9 @@ jobs:
     - uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: swe4s
-        environment-file: environment.yml
+        environment-file: environment.yaml
     - run: |
        pycodestyle $(git ls-files '*.py')
-       pylint $(git ls-files '*.py')
   run_unit_test:
     runs-on: ubuntu-latest
     steps:
