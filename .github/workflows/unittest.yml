@@ -28,4 +28,4 @@ jobs:
           environment-name: swe4s
       - run: |
           cd test/unit
-	  python -m unittest test_utils  
+	  python -m unittest test_utils
