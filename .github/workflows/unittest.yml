@@ -16,7 +16,8 @@ jobs:
         activate-environment: swe4s
         environment-file: environment.yaml
     - run: |
-       pycodestyle $(git ls-files '*.py')
+        pylint $(git ls-files '*.py')
+        pycodestyle $(git ls-files '*.py')
   run_unit_test:
     runs-on: ubuntu-latest
     steps:
@@ -28,5 +29,5 @@ jobs:
         environment-name: swe4s
     - name: run the unit test 
       run: |
-       cd test/unit
-       python -m unittest test_utils
+        cd test/unit
+        python -m unittest test_utils
