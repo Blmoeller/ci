@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: conda-incubator/setup-miniconda@v2
+    - name: Install Conda environment with Micromamba
+      uses: mamba-org/provision-with-micromamba@main
       with:
-        activate-environment: swe4s
         environment-file: environment.yaml
+        environment-name: swe4s
     - run: |
-        pylint $(git ls-files '*.py')
         pycodestyle $(git ls-files '*.py')
   run_unit_test:
     runs-on: ubuntu-latest
