@@ -15,17 +15,16 @@ jobs:
         with:
           activate-environment: swe4s
           environment-file: environment.yml
-      - run: pycodestyle $(git ls-files "*.py")
+        run: pycodestyle $(git ls-files '*.py')
   run_unit_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
-        with:
-          environment-file: environment.yaml
-          environment-name: swe4s
-      - run: |
-      	  cd test/unit
-	        python -m unittest test_utils
+    - uses: actions/checkout@v2
+    - name: Install Conda environment with Micromamba
+      uses: mamba-org/provision-with-micromamba@main
+      with:
+        environment-file: environment.yaml
+        environment-name: swe4s
+      run: |
+        cd test/unit
+	python -m unittest test_utils
