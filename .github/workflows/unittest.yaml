@@ -26,6 +26,6 @@ jobs:
         with:
           environment-file: environment.yaml
           environment-name: swe4s
-      - run:|
-          cd test/unit
-	  python -m unittest test_utils
+      - run: |
+      	  cd test/unit
+	        python -m unittest test_utils
