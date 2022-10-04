@@ -1,9 +1,11 @@
 name: Unit Test
+
 on:
   push:
     branches: [ main ]
    pull_request:
     branches: [ main ]
+
 jobs:
   run_style_check:
     runs-on: ubuntu-latest
@@ -13,7 +15,7 @@ jobs:
        with:
          activate-environment: swe4s
          environment-file: environment.yml
-- run: pycodestyle $(git ls-files "*.py")
+       - run: pycodestyle $(git ls-files "*.py")
   run_unit_tests:
     runs-on: ubuntu-latest
     steps:
