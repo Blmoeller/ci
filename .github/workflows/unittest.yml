@@ -7,17 +7,21 @@ on:
     branches: [ main ]
 
 jobs:
-  run_style_check:
+  pycodestyle:
+    name: pycodestyle
     runs-on: ubuntu-latest
+    defaults: 
+      run:
+        shell: bash -l {0}
     steps:
     - uses: actions/checkout@v2
-    - name: Install Conda environment with Micromamba
-      uses: mamba-org/provision-with-micromamba@main
-      with:
+    - name: pycodestyle
+      uses: conda-incubator/setup-miniconda@v2
+      with: 
         environment-file: environment.yaml
         environment-name: swe4s
-    - run: |
-        pycodestyle $(git ls-files '*.py')
+    - name: run the style check 
+      run: pycodestyle $(git ls-files "*.py") 
   run_unit_test:
     runs-on: ubuntu-latest
     steps:
